@@ -1,14 +1,20 @@
-# Ignora archivos del sistema Mac
-.DS_store
+# Ignorar el entorno virtual
+venv/
 
-# Ignora la carpeta node_modules
-node_modules
+# Ignorar archivos de caché de Python
+__pycache__/
+*.pyc
 
-# Ignora todos los archivos de texto
-*.txt
+# Ignorar archivos de configuración de IDE
+.vscode/
+.idea/
 
-# Ignora archivos relacionados a API keys
-.env
+# Ignorar archivos de registro
+*.log
 
-# Ignora archivos de configuración SASS
-.sass-cache
+# Ignorar archivos de configuración de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de configuración de Git
+.git/
