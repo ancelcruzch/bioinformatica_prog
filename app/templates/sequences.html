@@ -1,4 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Secuencias</h1>
+<h1>Secuencias .. aqui la integracion</h1>
+
+<form action="{{ url_for('sequences.index') }}" method="POST">
+    <div class="form-group">
+        <label for="secuencia">Secuencia (máximo 30 caracteres)</label>
+        <input type="text" class="form-control" id="secuencia" name="secuencia" maxlength="30" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Procesar</button>
+</form>
+
+
+{% if resultado %}
+    <h2>Resultado</h2>
+    <p>¿Qué tipo es?: {{resultado.tipo}}</p>
+    <p>Cantidad de elementos: {{ resultado.cantidad }}</p>
+    <p>Transcripción ADN -> ARN: {{ resultado.arn }}</p>
+{% endif %}
+
+
 {% endblock %}
