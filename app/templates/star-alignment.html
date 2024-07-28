@@ -1,4 +1,67 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>estrella</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Alineamiento Estrella</h1>
+  <div class="card">
+    <div class="card-body">
+      <form id="sequence-form" action="{{ url_for('star_alignment.index') }}" method="POST">
+        <div class="form-group">
+          <label for="num_sequences">Número de Secuencias</label>
+          <input
+            type="number"
+            class="form-control"
+            id="num_sequences"
+            name="num_sequences"
+            min="1"
+            max="5"
+            required
+          />
+        </div>
+        <div id="sequences-container"></div>
+        <button type="submit" class="btn btn-primary mt-3">Procesar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('num_sequences').addEventListener('input', function() {
+    var container = document.getElementById('sequences-container');
+    container.innerHTML = '';
+    var numSequences = parseInt(this.value);
+
+    for (var i = 1; i <= numSequences; i++) {
+      var div = document.createElement('div');
+      div.className = 'form-group mt-3';
+      var label = document.createElement('label');
+      label.htmlFor = 'secuencia' + i;
+      label.innerText = 'Secuencia ' + i;
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'form-control';
+      input.id = 'secuencia' + i;
+      input.name = 'secuencia' + i;
+      input.maxLength = 30;
+      input.required = true;
+
+      div.appendChild(label);
+      div.appendChild(input);
+      container.appendChild(div);
+    }
+  });
+</script>
+
+{% if result %}
+<div class="card mt-5">
+    <div class="card-body">
+        <h2 class="card-title">Resultado</h2>
+        <p><strong>Total de alineamientos:</strong></p>
+        <p>
+            <span class="text-otro">{{ result.demo_ }}</span>
+        </p>
+    </div>
+</div>
+{% endif %}
+
+
 {% endblock %}

@@ -1,0 +1,126 @@
+/* Estilos generales y background */
+.background {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 2s;
+}
+
+.background::before {
+  content: "";
+  background-image: url('/static/img/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* Configuración del Navbar con gradiente de color */
+.navbar {
+  background: linear-gradient(135deg, #0062cc, #0096c7);
+  color: #fff;
+}
+
+.navbar-brand, .nav-link {
+  color: #ffffff;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+}
+
+.dropdown-menu {
+  background-color: #ffffff;
+  color: #333333;
+}
+/****************************** NUCLEOTIDOS ******************************/
+.nucleotide {
+    display: inline-block;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 30px; /* Ajusta el valor según sea necesario */
+    text-align: center; /* Para centrar el contenido */
+}
+
+/* ADN y ARN */
+.A { background-color: #f44336; }  /* Adenina */
+.U { background-color: #4caf50; }  /* Uracilo */
+.G { background-color: #2196f3; }  /* Guanina */
+.C { background-color: #ffeb3b; color: black; }  /* Citosina */
+.T { background-color: darkcyan; }  /* Timina */
+.gap { background-color: transparent; color: black; }  /* Gap */
+
+/* Aminoácidos */
+.R { background-color: #e91e63; color: white; }  /* Arginina */
+.N { background-color: #9c27b0; color: white; }  /* Asparagina */
+.D { background-color: #673ab7; color: white; }  /* Aspartato */
+.Q { background-color: #3f51b5; color: white; }  /* Glutamina */
+.E { background-color: #03a9f4; color: black; }  /* Glutamato */
+.H { background-color: #00bcd4; color: black; }  /* Histidina */
+.I { background-color: #009688; color: white; }  /* Isoleucina */
+.L { background-color: #4caf50; color: black; }  /* Leucina */
+.K { background-color: #8bc34a; color: black; }  /* Lisina */
+.M { background-color: #cddc39; color: black; }  /* Metionina */
+.F { background-color: #ffeb3b; color: black; }  /* Fenilalanina */
+.P { background-color: #ffc107; color: black; }  /* Prolina */
+.S { background-color: #ff9800; color: black; }  /* Serina */
+.T { background-color: #ff5722; color: white; }  /* Treonina */
+.W { background-color: #795548; color: white; }  /* Triptófano */
+.Y { background-color: #607d8b; color: white; }  /* Tirosina */
+.V { background-color: #9e9e9e; color: black; }  /* Valina */
+.B { background-color: #f44336; color: white; }  /* Aspartato o Asparagina (D o N) */
+.Z { background-color: #3f51b5; color: white; }  /* Glutamato o Glutamina (E o Q) */
+.X { background-color: #9e9e9e; color: black; }  /* Desconocido o cualquiera */
+.unknown { background-color: #000000; color: white; }  /* Caracter desconocido */
+
+/****************************** TIPOS DE SECUENCIAS ******************************/
+/* Estilos para tipos de secuencias */
+.text-adn, .text-arn, .text-proteina, .text-otro {
+  display: inline-block;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.text-adn { color: #1e88e5; }
+.text-arn { color: #43a047; }
+.text-proteina { color: #6a1b9a; }
+.text-otro { color: #ff5722; }
+
+
+/* Estilos adicionales */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-get-started {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-get-started:hover {
+  background-color: #0056b3;
+}

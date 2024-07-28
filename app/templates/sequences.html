@@ -1,22 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Secuencias .. aqui la integracion</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Integración de Secuencias</h1>
 
-<form action="{{ url_for('sequences.index') }}" method="POST">
-    <div class="form-group">
-        <label for="secuencia">Secuencia (máximo 30 caracteres)</label>
-        <input type="text" class="form-control" id="secuencia" name="secuencia" maxlength="30" required>
+  <div class="card">
+    <div class="card-body">
+      <form action="{{ url_for('sequences.index') }}" method="POST">
+        <div class="form-group">
+          <label for="secuencia">Secuencia (máximo 30 caracteres)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="secuencia"
+            name="secuencia"
+            maxlength="30"
+            placeholder="Introduce la secuencia aquí"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Procesar</button>
+      </form>
     </div>
-    <button type="submit" class="btn btn-primary">Procesar</button>
-</form>
+  </div>
 
+  {% if result %}
+  <div class="card mt-5">
+    <div class="card-body">
+        <h2 class="card-title">Resultado</h2>
+        <p><strong>¿Qué tipo es?:</strong></p>
+        <p>
+            <span class="{% if result.tipo == 'PROTEINA' %}text-proteina{% elif result.tipo == 'ADN' %}text-adn{% elif result.tipo == 'ARN' %}text-arn{% else %}text-otro{% endif %}">
+                {{ result.tipo }}
+            </span>
+        </p>
+        <p><strong>Cantidad de elementos:</strong></p>
+        <p>
+            <span class="text-otro">{{ result.cantidad }}</span>
+        </p>
 
-{% if resultado %}
-    <h2>Resultado</h2>
-    <p>¿Qué tipo es?: {{resultado.tipo}}</p>
-    <p>Cantidad de elementos: {{ resultado.cantidad }}</p>
-    <p>Transcripción ADN -> ARN: {{ resultado.arn }}</p>
-{% endif %}
-
-
+        <p><strong>Transcripción ADN -> ARN:</strong></p>
+        <p id="sequence" class="d-flex flex-wrap">
+            {% for nucleotide in result.arn %}
+            <span class="nucleotide {{ nucleotide }} me-1">{{ nucleotide }}</span>
+            {% endfor %}
+        </p>
+    </div>
+  </div>
+  {% endif %}
+</div>
 {% endblock %}

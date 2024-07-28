@@ -1,4 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>simple linkage</h1>
+<h1>Simple Linkage</h1>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Alineamiento de distancia Minima</h1>
+  
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ url_for('simple_linkage.index') }}" method="POST">
+                <div class="form-group">
+                    <label for="matrix_input">Matriz de entrada:</label>
+                    <textarea
+                        class="form-control"
+                        id="matrix_input"
+                        name="matrix_input"
+                        rows="15"
+                        required
+                    ></textarea>    
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Procesar</button>
+            </form>
+        </div>
+    </div>
+  
+    {% if result %}
+    <div class="card mt-5">
+        <div class="card-body">
+            <h2 class="card-title">Resultado</h2>
+            <p>{{ result }}</p> <!-- Mostrar el resultado aquí -->
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

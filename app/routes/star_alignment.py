@@ -1,7 +1,16 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 bp = Blueprint('star_alignment', __name__, url_prefix='/star_alignment')
 
-@bp.route('/')
+@bp.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('star-alignment.html')
+    resultado = None
+    if request.method == 'POST':
+
+        nro_secuencias = request.form['num_sequences']
+        resultado = {
+            'demo_' : nro_secuencias
+        }
+
+
+    return render_template('star-alignment.html', result=resultado)

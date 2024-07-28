@@ -22,4 +22,4 @@ def index():
         }
 
 
-    return render_template('sequences.html', resultado=resultado)
+    return render_template('sequences.html', result=resultado)
