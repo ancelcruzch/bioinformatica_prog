@@ -1,4 +1,72 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Local Alignment</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Alineamiento Local</h1>
+  
+    <div class="card">
+      <div class="card-body">
+        <form action="{{ url_for('local_alignment.index') }}" method="POST">
+          <div class="form-group">
+            <label for="secuencia1">Secuencia 1</label>
+            <input
+              type="text"
+              class="form-control"
+              id="secuencia1"
+              name="secuencia1"
+              maxlength="30"
+              required
+              value="{{ secuencia1 }}"
+            />
+          </div>
+          <div class="form-group mt-3">
+            <label for="secuencia2">Secuencia 2</label>
+            <input
+              type="text"
+              class="form-control"
+              id="secuencia2"
+              name="secuencia2"
+              maxlength="30"
+              required
+              value="{{ secuencia2 }}"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Procesar</button>
+        </form>
+      </div>
+    </div>
+  
+    {% if result %}
+    <div class="card mt-5">
+        <div class="card-body">
+            <h2 class="card-title">Resultado</h2>
+            <p><strong>Total de alineamientos:</strong></p>
+            <p>
+                <span class="text-otro">{{ result.alignments|length }}</span>
+            </p>
+            <p><strong>Score:</strong></p>
+            <p>
+                <span class="text-otro">{{ result.score }}</span>
+            </p>
+            {% for i in range(result.alignments|length) %}
+            <div class="alignment mt-3">
+                <p><strong>Alineamiento {{ i + 1 }}:</strong></p>
+                <div class="d-flex flex-wrap">
+                    {% for nucleotide in result.alignments[i][0] %}
+                    <span class="nucleotide {{ get_nucleotide_class(nucleotide) }} me-1">{{ nucleotide }}</span>
+                    {% endfor %}
+                </div>
+              
+                <div class="d-flex flex-wrap">
+                    {% for nucleotide in result.alignments[i][1] %}
+                    <span class="nucleotide {{ get_nucleotide_class(nucleotide) }} me-1">{{ nucleotide }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock %}
