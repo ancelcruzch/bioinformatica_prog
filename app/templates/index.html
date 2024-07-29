@@ -1,14 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="background">
-  <div class="container content text-center">
-    <h1 class="display-4 text-white">BIOINFORMATICA - UNSA</h1>
-    <h3 class="text-light">Integrantes:</h3>
-    <p class="text-white">ALAIN CRUZ</p>
-    <p class="text-white">GABRIEL PACCO</p>
-    <a href="/" class="btn btn-primary btn-lg mt-3">Get Started</a>
+<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="content-wrapper text-center">
+    <h1 class="display-4 text-white font-weight-bold" style="text-shadow: 2px 2px #000000; font-family: 'Montserrat', sans-serif;">BIOINFORMATICA - UNSA</h1>
+    <h3 class="text-light" style="font-family: 'Roboto', sans-serif;">Integrantes:</h3>
+    <p class="text-white font-italic" style="font-family: 'Roboto', sans-serif;">ALAIN CRUZ</p>
+    <p class="text-white font-italic" style="font-family: 'Roboto', sans-serif;">GABRIEL PACCO</p>
+    <a href="/" class="btn btn-primary btn-lg mt-3" style="background-color: #007bff; border: none; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); font-family: 'Montserrat', sans-serif;">Get Started</a>
   </div>
 </div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:ital,wght@0,400;1,300&display=swap');
+
+  .content-wrapper {
+    background-image: url('static/img/portada.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 150px;
+    max-width: 85%;
+    border-radius: 50px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+</style>
 
 {% endblock %}
