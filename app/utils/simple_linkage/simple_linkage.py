@@ -135,7 +135,7 @@ def crear_dendograma(labels, unions, weights, tittle, filename):
     plt.savefig(filename+'.png')
     plt.close()
 
-def generar_dendogramas(input_text):
+def generar_valores(input_text):
     matriz = read_matrix(input_text)
     strategies = ['simple', 'complete', 'average']
 
@@ -153,18 +153,28 @@ def generar_dendogramas(input_text):
     labels = results['simple'][0]
     uniones = [cluster[-1] for cluster in results['simple'][1:]]
 
+    # Variables de retorno
+    uniones_list = []
+    distancias_minimas_list = []
+
+    labels = results[strategy][0]
+    print(f"Labels: {labels}")
+
     # Imprimir resultados para cada estrategia
     i = 0
     for strategy in strategies:
         print(f"Resultados para la estrategia {strategy}:")
-        labels = results[strategy][0]
         uniones = [cluster[-1] for cluster in results[strategy][1:]]
-        print(f"Labels: {labels}")
         print(f"Uniones: {uniones}")
+        uniones_list.append(uniones)
         print(f"Distancias mínimas: {min_distances[strategy]}")
+        distancias_minimas_list.append(min_distances[strategy])
         print('-' * 50)  # Separador para claridad
-        crear_dendograma(labels, uniones, min_distances[strategy], distancias[i], strategy)
+        #crear_dendograma(labels, uniones, min_distances[strategy], distancias[i], strategy)
         i += 1
+
+    return labels, uniones_list, distancias_minimas_list
+
 
 text = '''0
 41.6214	0		
@@ -172,4 +182,4 @@ text = '''0
 30.0218	24.6916	23.8391	0
 '''
 
-generar_dendogramas(text)
+generar_valores(text)
